@@ -7,10 +7,14 @@
     <!-- Website favicon -->
     <link rel="icon" sizes="180x180" href="src/images/favicon.ico" />
     <link rel="stylesheet" href="src/CSS/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css"
+    />
   </head>
   <body>
     <header class="container">
-      <form class="search-form">
+      <form class="search-form" id="search-form">
         <!-- Search parameters -->
         <ul class="search-options">
           <li>
@@ -39,12 +43,7 @@
         </ul>
 
         <!-- Input part -->
-        <input
-          type="text"
-          name="query"
-          placeholder="Enter keyword..."
-          required
-        />
+        <input type="text" name="query" placeholder="Enter keyword..." />
         <button type="submit">Search</button>
       </form>
     </header>
@@ -88,5 +87,6 @@
       </div>
     </footer>
     <script src="src/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
   </body>
 </html>
