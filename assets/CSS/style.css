@@ -1,0 +1,20 @@
+:root {
+  /* Basic */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Accent */
+  --color-red: #d32f2f;
+  --color-yellow: #fbc02d;
+  --color-blue: #1565c0;
+
+  /* Additional shades */
+  --color-blue-dark: #0d47a1;
+  --color-red-light: #e57373;
+  --color-yellow-light: #fff176;
+}
+.container {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
