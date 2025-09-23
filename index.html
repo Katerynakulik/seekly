@@ -7,6 +7,34 @@
     <link rel="stylesheet" href="assets/CSS/style.css" />
   </head>
   <body>
+    <header>
+      <form class="search-form">
+        <!-- Search parameters -->
+        <div class="search-options">
+          <label>
+            <input type="radio" name="category" value="movies" checked />
+            Movies
+          </label>
+          <label>
+            <input type="radio" name="category" value="images" />
+            Images
+          </label>
+          <label>
+            <input type="radio" name="category" value="articles" />
+            Articles
+          </label>
+        </div>
+
+        <!-- Input part -->
+        <input
+          type="text"
+          name="query"
+          placeholder="Enter keyword..."
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+    </header>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
