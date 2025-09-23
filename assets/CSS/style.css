@@ -5,6 +5,9 @@ ul {
 .hidden {
   display: none;
 }
+body {
+  background: var(--color-black);
+}
 :root {
   /* Basic */
   --color-white: #ffffff;
@@ -21,10 +24,10 @@ ul {
   --color-yellow-light: #fff176;
 }
 /* Style search-form */
-.header {
-  background-color: var(--color-white);
+header {
   padding: 20px;
   border-bottom: 2px solid var(--color-yellow);
+  margin-bottom: 20px;
 }
 .search-form {
   display: flex;
@@ -97,25 +100,89 @@ ul {
   background-color: var(--color-blue);
 }
 
-/* Мобільна версія */
-@media (max-width: 600px) {
-  .search-options {
-    flex-direction: column;
-  }
-}
 /* Style main  */
 main {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 7% 5%;
+  border-bottom: 2px solid var(--color-yellow);
+  padding: 20px 0;
+  min-height: calc(100vh - 200px);
+  box-sizing: border-box;
 }
 .main-container {
-  background-image: url("../images/search.jpg");
-  background-size: cover; /* зберегти всю картинку */
-  background-position: 50% 70%;
-  height: 500px;
-  width: 100%;
-  padding: 10% 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+/* Style image */
+.main-container img {
+  max-width: 100%;
+  max-height: 80vh;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+/* Style feedback form in footer */
+footer {
+  color: var(--color-white);
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-container h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--color-yellow);
+}
+
+.footer-container p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: var(--color-white);
+  opacity: 0.8;
+}
+
+.feedback-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.feedback-form select,
+.feedback-form input {
+  padding: 12px 15px;
+  border: 2px solid var(--color-blue);
+  border-radius: 8px;
+  font-size: 1rem;
+  min-width: 200px;
+}
+
+.feedback-form button {
+  background: var(--color-red);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.feedback-form button:hover {
+  background: var(--color-blue);
+}
+/* Mobile version */
+@media (max-width: 600px) {
+  .feedback-form {
+    flex-direction: column;
+  }
+  .search-options {
+    flex-direction: column;
+  }
 }
