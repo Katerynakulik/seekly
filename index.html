@@ -49,9 +49,35 @@
       </form>
     </header>
     <main>
-      <div class="main-container"></div>
+      <div class="main-container">
+        <h1 class="hidden">Here you will see search results</h1>
+      </div>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="footer-container">
+        <h3>Didn’t find what you were looking for?</h3>
+        <p>Tell us what you need, and we’ll improve our search for you.</p>
+
+        <form class="feedback-form">
+          <select name="category" required>
+            <option value="">Choose a category</option>
+            <option value="movies">Movies</option>
+            <option value="images">Images</option>
+            <option value="articles">Articles</option>
+            <option value="other">Other</option>
+          </select>
+
+          <input
+            type="text"
+            name="keyword"
+            placeholder="What didn't you find?"
+            required
+          />
+
+          <button type="submit">Send Request</button>
+        </form>
+      </div>
+    </footer>
     <script src="assets/js/script.js"></script>
   </body>
 </html>

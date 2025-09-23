@@ -2,6 +2,9 @@ ol,
 ul {
   list-style: none;
 }
+.hidden {
+  display: none;
+}
 :root {
   /* Basic */
   --color-white: #ffffff;
