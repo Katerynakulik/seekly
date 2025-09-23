@@ -2,6 +2,7 @@ const form = document.getElementById("search-form");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   const formData = new FormData(form);
+  const queryInput = form.querySelector('input[name="query"]');
   const query = formData.get("query")?.trim();
   const category = formData.get("category");
   if (!query) {
