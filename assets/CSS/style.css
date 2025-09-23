@@ -100,3 +100,19 @@ ul {
     flex-direction: column;
   }
 }
+/* Style main  */
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 7% 5%;
+}
+.main-container {
+  background-image: url("../images/search.jpg");
+  background-size: cover; /* зберегти всю картинку */
+  background-position: 50% 70%;
+  height: 500px;
+  width: 100%;
+  padding: 10% 15%;
+}
