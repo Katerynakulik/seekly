@@ -1,3 +1,7 @@
+ol,
+ul {
+  list-style: none;
+}
 :root {
   /* Basic */
   --color-white: #ffffff;
@@ -13,8 +17,86 @@
   --color-red-light: #e57373;
   --color-yellow-light: #fff176;
 }
-.container {
-  padding-top: 2rem;
+/* Style search-form */
+.header {
+  background-color: var(--color-white);
+  padding: 20px;
+  border-bottom: 2px solid var(--color-yellow);
+}
+.search-form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.search-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.search-options input[type="radio"] {
+  position: absolute; /* забираємо з потоку */
+  opacity: 0; /* робимо невидимим */
+  width: 0;
+  height: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.search-options input[type="radio"]:checked + label {
+  background: var(--color-red);
+  font-weight: bold;
+}
+.search-options li {
+  flex: 1;
+  position: relative;
+  display: inline-block;
+}
+.search-options label {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-align: center;
+  background: var(--color-blue);
+  color: var(--color-white);
+  user-select: none;
+  transition: background 0.2s ease, transform 0.12s ease;
+  font-weight: 500;
+  cursor: pointer;
+}
+/* Hover effect */
+.search-options label:hover {
+  background-color: var(--color-blue-dark);
+}
+/* Input zone */
+.search-form input[type="text"] {
+  padding: 10px;
+  border: 2px solid var(--color-blue);
+  border-radius: 6px;
+  font-size: 16px;
+}
+/* Search button */
+.search-form button {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+.search-form button:hover {
+  background-color: var(--color-blue);
+}
+
+/* Мобільна версія */
+@media (max-width: 600px) {
+  .search-options {
+    flex-direction: column;
+  }
 }

@@ -10,20 +10,31 @@
     <header class="container">
       <form class="search-form">
         <!-- Search parameters -->
-        <div class="search-options">
-          <label>
-            <input type="radio" name="category" value="movies" checked />
-            Movies
-          </label>
-          <label>
-            <input type="radio" name="category" value="images" />
-            Images
-          </label>
-          <label>
-            <input type="radio" name="category" value="articles" />
-            Articles
-          </label>
-        </div>
+        <ul class="search-options">
+          <li>
+            <input
+              type="radio"
+              name="category"
+              value="movies"
+              id="movies"
+              checked
+            />
+            <label for="movies"> Movies </label>
+          </li>
+          <li>
+            <input type="radio" name="category" value="images" id="images" />
+            <label for="images"> Images </label>
+          </li>
+          <li>
+            <input
+              type="radio"
+              name="category"
+              value="articles"
+              id="articles"
+            />
+            <label for="articles"> Articles </label>
+          </li>
+        </ul>
 
         <!-- Input part -->
         <input
