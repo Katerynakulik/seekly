@@ -36,8 +36,7 @@ export async function fetchMovies(query, page) {
 // Create a movie Card
 
 export const createMovieCard = (movie, onSelect) => {
-  const placeholderImage =
-    "https://media.istockphoto.com/id/1478374885/de/foto/fr%C3%B6hliche-familie-die-film-im-kino-sieht.jpg?s=2048x2048&w=is&k=20&c=nK-Secl8nJkcWP2mbA4eDCW3gAiDWhNDgiS_FprTYr0=";
+  const placeholderImage = "/images/pexels-cottonbro-3945314.jpg";
   const li = document.createElement("li");
   const div = document.createElement("div");
   div.classList.add("card");
