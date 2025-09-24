@@ -4,7 +4,9 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export async function fetchMovies(query, page = 1) {
+// This function handles getting data from the movie database.
+
+const fetchMovies(query, page) {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/search/movie`,
@@ -31,3 +33,35 @@ export async function fetchMovies(query, page = 1) {
     return [];
   }
 }
+
+// Create a movie Card
+
+const createMovieCard = (movie, onSelect) => 
+    {const li = document.createElement("li");
+    const div = document.createElement("div");
+    div.classList.add("card");
+    div.addEventListener("click", () => onSelect(movie));
+    const createMovieCard = (movie, onSelect) => {
+    const li = document.createElement("li");
+    const div = document.createElement("div");
+    div.classList.add("card");
+    div.addEventListener("click", () => onSelect(movie));
+
+    const img = document.createElement("img");
+    img.classList.add("image");
+    img.src = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        : placeholderImage;
+    img.alt = movie.title;
+    img.loading = "lazy";
+
+    const h2 = document.createElement("h2");
+    h2.classList.add("title");
+    h2.textContent = movie.title;
+
+    div.append(img, h2);
+    li.appendChild(div);
+
+    return li;
+}};
+
