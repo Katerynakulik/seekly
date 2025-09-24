@@ -5,6 +5,7 @@ ul {
 
 body {
   background: var(--color-black);
+  padding: 0 16px;
 }
 :root {
   /* Basic */
@@ -100,7 +101,6 @@ header {
 
 /* Style main  */
 main {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

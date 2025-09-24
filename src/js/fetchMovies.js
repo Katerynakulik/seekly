@@ -2,11 +2,10 @@
 // https://developer.themoviedb.org/docs/image-basics
 
 import axios from "axios";
-import toast from "react-hot-toast";
 
 // This function handles getting data from the movie database.
 
-export const fetchMovies(query, page) {
+export async function fetchMovies(query, page) {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/search/movie`,
@@ -36,46 +35,43 @@ export const fetchMovies(query, page) {
 
 // Create a movie Card
 
-export const createMovieCard = (movie, onSelect) => 
-    {const li = document.createElement("li");
-    const div = document.createElement("div");
-    div.classList.add("card");
-    div.addEventListener("click", () => onSelect(movie));
-    const createMovieCard = (movie, onSelect) => {
-    const li = document.createElement("li");
-    const div = document.createElement("div");
-    div.classList.add("card");
-    div.addEventListener("click", () => onSelect(movie));
+export const createMovieCard = (movie, onSelect) => {
+  const placeholderImage =
+    "https://media.istockphoto.com/id/1478374885/de/foto/fr%C3%B6hliche-familie-die-film-im-kino-sieht.jpg?s=2048x2048&w=is&k=20&c=nK-Secl8nJkcWP2mbA4eDCW3gAiDWhNDgiS_FprTYr0=";
+  const li = document.createElement("li");
+  const div = document.createElement("div");
+  div.classList.add("card");
+  div.addEventListener("click", () => onSelect(movie));
 
-    const img = document.createElement("img");
-    img.classList.add("image");
-    img.src = movie.poster_path
-        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-        : placeholderImage;
-    img.alt = movie.title;
-    img.loading = "lazy";
+  const img = document.createElement("img");
+  img.classList.add("image");
+  img.src = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : placeholderImage;
+  img.alt = movie.title;
+  img.loading = "lazy";
 
-    const h2 = document.createElement("h2");
-    h2.classList.add("title");
-    h2.textContent = movie.title;
+  const h2 = document.createElement("h2");
+  h2.classList.add("title");
+  h2.textContent = movie.title;
 
-    div.append(img, h2);
-    li.appendChild(div);
+  div.append(img, h2);
+  li.appendChild(div);
 
-    return li;
-}};
+  return li;
+};
+
 // These functions build and display the movie cards on the page
 
 export const renderMovieGrid = (movies, onSelect) => {
-    const movieGrid = document.getElementById(".results .gallery");
-    if (!movieGrid) {
-        console.error("Element with id “gallery” not found.");
-        return;
-    }
-    movieGrid.innerHTML = "";
-    movies.forEach(movie => {
-        const movieCard = createMovieCard(movie, onSelect);
-        movieGrid.appendChild(movieCard);
-    });
+  const movieGrid = document.querySelector(".results .gallery");
+  if (!movieGrid) {
+    console.error("Element '.gallery' not found.");
+    return;
+  }
+  movieGrid.innerHTML = "";
+  movies.forEach((movie) => {
+    const movieCard = createMovieCard(movie, onSelect);
+    movieGrid.appendChild(movieCard);
+  });
 };
-
