@@ -1,19 +1,36 @@
 import { fetchMovies, renderMovieGrid } from "./js/fetchMovies.js";
+import {
+  getImagesByQuery,
+  showLoadMoreButton,
+  hideLoadMoreButton,
+  createGallery,
+} from "./js/fetchImages.js";
 document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form");
   const queryInput = searchForm.querySelector('input[name="query"]');
   const resultsContainer = document.querySelector(".results");
   const initialImage = document.querySelector("main .base-image");
   const loader = document.querySelector(".loader");
+  const loadMoreBtn = document.querySelector(".load-more");
+
+  let currentQuery = "";
+  let currentCategory = "";
+  let currentPage = 1;
+  // Show loader
   const showLoader = () => {
     initialImage.classList.add("hidden");
     resultsContainer.classList.add("hidden");
     loader.classList.remove("hidden");
   };
-
+  // Hide loader
   const hideLoader = () => {
     loader.classList.add("hidden");
     resultsContainer.classList.remove("hidden");
+  };
+  // Reset gallery before new search
+  const resetGallery = () => {
+    document.querySelector(".gallery").innerHTML = "";
+    hideLoadMoreButton();
   };
 
   const handleMovieSelect = (movie) => {
@@ -49,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } finally {
         hideLoader();
       }
+    } else if (category === "images") {
     } else {
       iziToast.warning({
         title: "Attention",
