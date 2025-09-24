@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 // This function handles getting data from the movie database.
 
-const fetchMovies(query, page) {
+export const fetchMovies(query, page) {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/search/movie`,
@@ -36,7 +36,7 @@ const fetchMovies(query, page) {
 
 // Create a movie Card
 
-const createMovieCard = (movie, onSelect) => 
+export const createMovieCard = (movie, onSelect) => 
     {const li = document.createElement("li");
     const div = document.createElement("div");
     div.classList.add("card");
@@ -64,4 +64,18 @@ const createMovieCard = (movie, onSelect) =>
 
     return li;
 }};
+// These functions build and display the movie cards on the page
+
+export const renderMovieGrid = (movies, onSelect) => {
+    const movieGrid = document.getElementById(".results .gallery");
+    if (!movieGrid) {
+        console.error("Element with id “gallery” not found.");
+        return;
+    }
+    movieGrid.innerHTML = "";
+    movies.forEach(movie => {
+        const movieCard = createMovieCard(movie, onSelect);
+        movieGrid.appendChild(movieCard);
+    });
+};
 
