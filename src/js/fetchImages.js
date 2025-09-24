@@ -10,7 +10,7 @@ export async function getImagesByQuery(query, page) {
     orientation: "horizontal",
     safesearch: true,
     page: page,
-    per_page: 15,
+    per_page: 30,
   };
   try {
     const answer = await axios.get(BASE_URL, { params: searchParams });
@@ -68,4 +68,9 @@ export function createGallery(images) {
   lightbox.refresh();
 }
 
-console.log("mygallery", container);
+export function showLoadMoreButton() {
+  document.querySelector(".load-more").classList.remove("is-hidden");
+}
+export function hideLoadMoreButton() {
+  document.querySelector(".load-more").classList.add("is-hidden");
+}
