@@ -17,7 +17,7 @@ form.addEventListener("submit", function (event) {
   switch (category) {
     case "movies":
       console.log("Search movies for:", query);
-      // fetchMovies(query);
+      fetchMovies(query);
       break;
     case "images":
       console.log("Search images for:", query);
