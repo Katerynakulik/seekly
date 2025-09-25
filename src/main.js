@@ -13,14 +13,11 @@ import {
 document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form");
   const queryInput = searchForm.querySelector('input[name="query"]');
-  const resultsContainer = document.querySelector(".results");
-  const initialImage = document.querySelector("main .base-image");
-  const loader = document.querySelector(".loader");
-  const loadMoreBtn = document.querySelector(".load-more");
 
   let currentQuery = "";
   let currentCategory = "";
   let currentPage = 1;
+  let totalHits = 0;
 
   // Handle movie card click
   const handleMovieSelect = (movie) => {
@@ -51,19 +48,20 @@ document.addEventListener("DOMContentLoaded", () => {
     showLoader();
     try {
       if (category === "movies") {
-        const movies = await fetchMovies(query, 1);
+        const movies = await fetchMovies(query, currentPage);
         renderMovieGrid(movies, handleMovieSelect);
-      } else if (currentCategory === "images") {
-        const images = await getImagesByQuery(currentQuery, currentPage);
+        if (movies.length > 0) showLoadMoreButton();
+      } else if (category === "images") {
+        const images = await getImagesByQuery(query, currentPage);
+        totalHits = images.totalHits;
         createGallery(images.hits);
-
-        if (images.hits.length > 0 && images.totalHits > currentPage * 30) {
+        if (images.hits.length > 0 && totalHits > 15) {
           showLoadMoreButton();
         }
       } else {
         iziToast.warning({
           title: "Attention",
-          message: `Search for category "${currentCategory}" not yet implemented.`,
+          message: `Search for category "${category}" not yet implemented.`,
           position: "topCenter",
           timeout: 3000,
         });

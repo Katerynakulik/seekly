@@ -6,14 +6,14 @@ export function hideLoadMoreButton() {
 }
 // Show loader
 export const showLoader = () => {
-  initialImage.classList.add("hidden");
-  resultsContainer.classList.add("hidden");
-  loader.classList.remove("hidden");
+  document.querySelector("main .base-image").classList.add("hidden");
+  document.querySelector(".results").classList.add("hidden");
+  document.querySelector(".loader").classList.remove("hidden");
 };
 // Hide loader
 export const hideLoader = () => {
-  loader.classList.add("hidden");
-  resultsContainer.classList.remove("hidden");
+  document.querySelector(".loader").classList.add("hidden");
+  document.querySelector(".results").classList.remove("hidden");
 };
 // Reset gallery before new search
 export const resetGallery = () => {
