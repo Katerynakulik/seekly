@@ -6,7 +6,7 @@ const BASE_URL = "https://pixabay.com/api/";
 // fetch images from Pixabay
 export async function getImagesByQuery(query, page) {
   const searchParams = {
-    key: import.meta.env.PIXABAY_API_KEY,
+    key: import.meta.env.VITE_PIXABAY_API_KEY,
     q: query,
     image_type: "photo",
     orientation: "horizontal",
@@ -39,28 +39,16 @@ export function createGallery(images) {
     comments,
     downloads,
   }) {
-    return `<li class="gallery-item">
+    return `<li class="card">
         <a class="gallery-link" href="${largeImageURL}">
-          <img class="gallery-image" src="${webformatURL}" alt="${tags}" />
+          <img class="image" src="${webformatURL}" alt="${tags}" />
         </a>
-        <div class="image-describe">
-        <div class="img-info">
-          <b>Likes</b>
-          <p>${likes}</p>
+        <h2 class="title">
+        ${tags}  
+    <br />
+    ❤️ ${likes} | 👁️ ${views} | ⬇️ ${downloads}
         </div>
-        <div class="img-info">
-          <b>Views</b>
-          <p>${views}</p>
-        </div>
-        <div class="img-info">
-          <b>Comments</b>
-          <p>${comments}</p>
-        </div>
-        <div class="img-info">
-          <b>Downloads</b>
-          <p>${downloads}</p>
-        </div>
-        </div>
+        </h2>
       </li>
     `;
   }

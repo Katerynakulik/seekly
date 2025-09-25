@@ -13,6 +13,7 @@ import {
 document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form");
   const queryInput = searchForm.querySelector('input[name="query"]');
+  const loadMoreBtn = document.querySelector(".load-more");
 
   let currentQuery = "";
   let currentCategory = "";
@@ -71,5 +72,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     queryInput.value = "";
+  });
+
+  // Load more
+  loadMoreBtn.addEventListener("click", async () => {
+    currentPage += 1;
+    showLoader();
+
+    try {
+      if (currentCategory === "movies") {
+        const movies = await fetchMovies(currentQuery, currentPage);
+        renderMovieGrid(movies, handleMovieSelect);
+        if (movies.length === 0) hideLoadMoreButton();
+      } else if (currentCategory === "images") {
+        const data = await getImagesByQuery(currentQuery, currentPage);
+        createGallery(data.hits);
+        scrollPage();
+
+        if (currentPage * 15 >= totalHits) {
+          hideLoadMoreButton();
+          iziToast.info({
+            title: "Notice",
+            message:
+              "We're sorry, but you've reached the end of search results.",
+            position: "topRight",
+          });
+        }
+      } else {
+        iziToast.info({
+          title: "Notice",
+          message: "Load more is not implemented for this category.",
+          position: "topRight",
+        });
+        hideLoadMoreButton();
+      }
+    } catch (error) {
+      iziToast.error({
+        title: "Error",
+        message: "There was an error, please try again later.",
+        position: "topRight",
+      });
+    } finally {
+      hideLoader();
+    }
   });
 });
