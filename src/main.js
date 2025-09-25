@@ -5,6 +5,7 @@ import {
   hideLoadMoreButton,
   createGallery,
 } from "./js/fetchImages.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form");
   const queryInput = searchForm.querySelector('input[name="query"]');
@@ -16,23 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentQuery = "";
   let currentCategory = "";
   let currentPage = 1;
-  // Show loader
-  const showLoader = () => {
-    initialImage.classList.add("hidden");
-    resultsContainer.classList.add("hidden");
-    loader.classList.remove("hidden");
-  };
-  // Hide loader
-  const hideLoader = () => {
-    loader.classList.add("hidden");
-    resultsContainer.classList.remove("hidden");
-  };
-  // Reset gallery before new search
-  const resetGallery = () => {
-    document.querySelector(".gallery").innerHTML = "";
-    hideLoadMoreButton();
-  };
 
+  // Handle movie card click
   const handleMovieSelect = (movie) => {
     iziToast.info({
       title: "Film selected",
@@ -57,23 +43,29 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       return;
     }
-
-    if (category === "movies") {
-      showLoader();
-      try {
+    resetGallery();
+    showLoader();
+    try {
+      if (category === "movies") {
         const movies = await fetchMovies(query, 1);
         renderMovieGrid(movies, handleMovieSelect);
-      } finally {
-        hideLoader();
+      } else if (currentCategory === "images") {
+        const images = await getImagesByQuery(currentQuery, currentPage);
+        createGallery(images.hits);
+
+        if (images.hits.length > 0 && images.totalHits > currentPage * 30) {
+          showLoadMoreButton();
+        }
+      } else {
+        iziToast.warning({
+          title: "Attention",
+          message: `Search for category "${currentCategory}" not yet implemented.`,
+          position: "topCenter",
+          timeout: 3000,
+        });
       }
-    } else if (category === "images") {
-    } else {
-      iziToast.warning({
-        title: "Attention",
-        message: `Search for category "${category}" not yet implemented.`,
-        position: "topCenter",
-        timeout: 3000,
-      });
+    } finally {
+      hideLoader();
     }
 
     queryInput.value = "";

@@ -1,7 +1,9 @@
 import axios from "axios";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+
 const BASE_URL = "https://pixabay.com/api/";
+// fetch images from Pixabay
 export async function getImagesByQuery(query, page) {
   const searchParams = {
     key: import.meta.env.PIXABAY_API_KEY,
@@ -20,13 +22,13 @@ export async function getImagesByQuery(query, page) {
   }
 }
 const container = document.querySelector(".gallery");
-
 const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
   captionPosition: "bottom",
 });
 
+// Build gallery from Pixabay response
 export function createGallery(images) {
   function itemInsert({
     webformatURL,
@@ -66,11 +68,4 @@ export function createGallery(images) {
   container.insertAdjacentHTML("beforeend", newGallery);
 
   lightbox.refresh();
-}
-
-export function showLoadMoreButton() {
-  document.querySelector(".load-more").classList.remove("is-hidden");
-}
-export function hideLoadMoreButton() {
-  document.querySelector(".load-more").classList.add("is-hidden");
 }
