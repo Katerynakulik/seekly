@@ -20,3 +20,18 @@ export const resetGallery = () => {
   document.querySelector(".gallery").innerHTML = "";
   hideLoadMoreButton();
 };
+// Clear gallery
+export function clearGallery() {
+  document.querySelector(".gallery").innerHTML = "";
+}
+// Scroll after loading
+export function scrollPage() {
+  const card = document.querySelector(".gallery-item");
+  if (!card) return;
+
+  const cardHeight = card.getBoundingClientRect().height;
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: "smooth",
+  });
+}

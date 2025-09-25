@@ -1,10 +1,14 @@
 import { fetchMovies, renderMovieGrid } from "./js/fetchMovies.js";
+import { getImagesByQuery, createGallery } from "./js/fetchImages.js";
 import {
-  getImagesByQuery,
   showLoadMoreButton,
   hideLoadMoreButton,
-  createGallery,
-} from "./js/fetchImages.js";
+  showLoader,
+  hideLoader,
+  resetGallery,
+  clearGallery,
+  scrollPage,
+} from "./js/service.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form");
