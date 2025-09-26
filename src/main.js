@@ -6,19 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form");
   const queryInput = searchForm.querySelector('input[name="query"]');
   const baseImage = document.querySelector(".base-image");
+  const feedbackForm = document.querySelector(".feedback-form");
 
   let currentQuery = "";
   let currentCategory = "";
-
-  // // Handle movie card click
-  // const handleMovieSelect = (movie) => {
-  //   iziToast.info({
-  //     title: "Film selected",
-  //     message: `You have selected the film: ${movie.title}`,
-  //     position: "topCenter",
-  //     timeout: 3000,
-  //   });
-  // };
 
   searchForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -78,5 +69,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     queryInput.value = "";
+  });
+  feedbackForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const categorySelect = feedbackForm.querySelector(
+      'select[name="category"]'
+    );
+    const keywordInput = feedbackForm.querySelector('input[name="keyword"]');
+
+    if (categorySelect.value && keywordInput.value.trim() !== "") {
+      const feedbackData = {
+        category: categorySelect.value,
+        keyword: keywordInput.value.trim(),
+      };
+
+      console.log("Feedback form data:", feedbackData);
+      iziToast.info({
+        title: "Info",
+        message: "Thank you for your feedback!",
+        position: "topCenter",
+        timeout: 3000,
+      });
+      feedbackForm.reset();
+    } else {
+      iziToast.error({
+        title: "Error",
+        message: "Please fill out all form fields.",
+      });
+    }
   });
 });
