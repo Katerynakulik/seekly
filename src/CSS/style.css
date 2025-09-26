@@ -1,8 +1,13 @@
+/* ===========================
+   RESET & ROOT VARIABLES
+   =========================== */
+
+/* Remove default list styles */
 ol,
 ul {
   list-style: none;
 }
-
+/* Color variables for consistency */
 :root {
   /* Basic */
   --color-white: #ffffff;
@@ -15,19 +20,23 @@ ul {
 
   /* Additional shades */
   --color-blue-dark: #0d47a1;
-  --color-red-light: #e57373;
-  --color-yellow-light: #fff176;
 }
+/* Global body styles */
 body {
   background: var(--color-black);
   padding: 0 16px;
 }
-/* Style search-form */
+/* ===========================
+   HEADER & SEARCH FORM
+   =========================== */
+
+/* Header with bottom border */
 header {
   padding: 20px;
   border-bottom: 2px solid var(--color-yellow);
   margin-bottom: 20px;
 }
+/* Search form layout */
 .search-form {
   display: flex;
   flex-direction: column;
@@ -35,6 +44,7 @@ header {
   max-width: 600px;
   margin: 0 auto;
 }
+/* Radio button container */
 .search-options {
   display: flex;
   gap: 15px;
@@ -44,23 +54,27 @@ header {
   padding: 0;
   margin: 0;
 }
+/* Hide real radio buttons */
 .search-options input[type="radio"] {
-  position: absolute; /* забираємо з потоку */
-  opacity: 0; /* робимо невидимим */
+  position: absolute;
+  opacity: 0;
   width: 0;
   height: 0;
   margin: 0;
   cursor: pointer;
 }
+/* Highlight selected category */
 .search-options input[type="radio"]:checked + label {
   background: var(--color-red);
   font-weight: bold;
 }
+/* Radio button list items */
 .search-options li {
   flex: 1;
   position: relative;
   display: inline-block;
 }
+/* Category labels */
 .search-options label {
   display: block;
   padding: 10px 14px;
@@ -73,11 +87,11 @@ header {
   font-weight: 500;
   cursor: pointer;
 }
-/* Hover effect */
+/* Hover effect on labels */
 .search-options label:hover {
   background-color: var(--color-blue-dark);
 }
-/* Input zone */
+/* Search input field */
 .search-form input[type="text"] {
   padding: 10px;
   border: 2px solid var(--color-blue);
@@ -99,7 +113,10 @@ header {
   background-color: var(--color-blue);
 }
 
-/* Style main  */
+/* ===========================
+   MAIN CONTENT
+   =========================== */
+
 main {
   display: flex;
   justify-content: center;
@@ -116,7 +133,7 @@ main {
   max-width: 100%;
   height: 100%;
 }
-/* Style image */
+/* Default illustration */
 .main-container .base-image {
   max-width: 100%;
   max-height: 80vh;
@@ -124,7 +141,10 @@ main {
   width: auto;
   object-fit: contain;
 }
-/* HTML: <div class="loader"></div> */
+/* ===========================
+   LOADER (ANIMATION)
+   https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_loader2
+   =========================== */
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
@@ -153,7 +173,9 @@ main {
     transform: rotate(360deg);
   }
 }
-/* Style feedback form in footer */
+/* ===========================
+   FOOTER & FEEDBACK FORM
+   =========================== */
 footer {
   color: var(--color-white);
   padding: 40px 20px;
@@ -204,19 +226,10 @@ footer {
 .feedback-form button:hover {
   background: var(--color-blue);
 }
-/* Mobile version */
-@media (max-width: 600px) {
-  .feedback-form {
-    flex-direction: column;
-  }
-  .search-options {
-    flex-direction: column;
-  }
-}
-.hidden {
-  display: none;
-}
-/* Style movie gallery */
+
+/* ===========================
+   GALLERY (MOVIES & IMAGES)
+   =========================== */
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -228,6 +241,7 @@ footer {
     justify-content: space-between;
   }
 }
+/* Gallery card */
 .card {
   position: relative;
   overflow: hidden;
@@ -241,7 +255,7 @@ footer {
   transform: scale(1.02);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
+/* Card image */
 .image {
   width: 100%;
   height: 300px;
@@ -249,7 +263,7 @@ footer {
   object-position: center;
   display: block;
 }
-
+/* Card title */
 .title {
   position: absolute;
   bottom: 0;
@@ -270,4 +284,21 @@ footer {
 
 .card:hover .title {
   background: rgba(0, 0, 0, 0.8);
+}
+/* ===========================
+   UTILITIES & RESPONSIVE
+   =========================== */
+
+/* Hidden class for toggling elements */
+.hidden {
+  display: none;
+}
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .feedback-form {
+    flex-direction: column;
+  }
+  .search-options {
+    flex-direction: column;
+  }
 }
