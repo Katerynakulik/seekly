@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             position: "topCenter",
             timeout: 3000,
           });
+
           return;
         }
 
