@@ -2,6 +2,7 @@
 // https://developer.themoviedb.org/docs/image-basics
 
 import axios from "axios";
+import defaultImage from "../images/default_movie_image.jpg";
 
 // This function handles getting data from the movie database.
 
@@ -36,7 +37,7 @@ export async function fetchMovies(query, page) {
 // Create a movie Card
 
 export const createMovieCard = (movie, onSelect) => {
-  const placeholderImage = "/src/images/default_movie_image.jpg";
+  const placeholderImage = defaultImage;
   const li = document.createElement("li");
   const div = document.createElement("div");
   div.classList.add("card");
