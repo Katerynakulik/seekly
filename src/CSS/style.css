@@ -230,7 +230,12 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: space-between;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .gallery {
+    justify-content: space-between;
+  }
 }
 .card {
   position: relative;
