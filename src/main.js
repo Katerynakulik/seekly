@@ -47,13 +47,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     resetGallery();
     showLoader();
+    hideLoadMoreButton();
+
     try {
       if (category === "movies") {
         const movies = await fetchMovies(query, currentPage);
+        if (!movies || movies.length === 0) {
+          hideLoadMoreButton();
+          document.querySelector(".results").classList.add("hidden");
+          document.querySelector(".base-image").classList.remove("hidden");
+
+          iziToast.warning({
+            title: "No results",
+            message: "No results found. Please try another query.",
+            position: "topCenter",
+            timeout: 3000,
+          });
+          return;
+        }
         renderMovieGrid(movies, handleMovieSelect);
+
         if (movies.length > 0) showLoadMoreButton();
       } else if (category === "images") {
         const images = await getImagesByQuery(query, currentPage);
+        if (!images || !images.hits || images.hits.length === 0) {
+          hideLoadMoreButton();
+          document.querySelector(".results").classList.add("hidden");
+          document.querySelector(".base-image").classList.remove("hidden");
+
+          iziToast.warning({
+            title: "No results",
+            message: "No results found. Please try another query.",
+            position: "topCenter",
+            timeout: 3000,
+          });
+          return;
+        }
         totalHits = images.totalHits;
         createGallery(images.hits);
         if (images.hits.length > 0 && totalHits > 15) {
@@ -91,12 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (currentPage * 15 >= totalHits) {
           hideLoadMoreButton();
-          iziToast.info({
-            title: "Notice",
-            message:
-              "We're sorry, but you've reached the end of search results.",
-            position: "topRight",
-          });
         }
       } else {
         iziToast.info({

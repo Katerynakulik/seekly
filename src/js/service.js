@@ -1,8 +1,8 @@
 export function showLoadMoreButton() {
-  document.querySelector(".load-more").classList.remove("is-hidden");
+  document.querySelector(".load-more").classList.remove("hidden");
 }
 export function hideLoadMoreButton() {
-  document.querySelector(".load-more").classList.add("is-hidden");
+  document.querySelector(".load-more").classList.add("hidden");
 }
 // Show loader
 export const showLoader = () => {
