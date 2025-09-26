@@ -36,7 +36,7 @@ export async function fetchMovies(query, page) {
 // Create a movie Card
 
 export const createMovieCard = (movie, onSelect) => {
-  const placeholderImage = "../images/default_movie_image.jpg";
+  const placeholderImage = "/src/images/default_movie_image.jpg";
   const li = document.createElement("li");
   const div = document.createElement("div");
   div.classList.add("card");
