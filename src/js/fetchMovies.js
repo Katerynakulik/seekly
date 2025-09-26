@@ -3,6 +3,8 @@
 
 import axios from "axios";
 import defaultImage from "../images/default_movie_image.jpg";
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 // This function handles getting data from the movie database.
 
@@ -23,9 +25,6 @@ export async function fetchMovies(query, page) {
         },
       }
     );
-
-    console.log("Fetched movies:", response.data.results);
-
     return response.data.results;
   } catch (error) {
     console.error("Error during query:", error);

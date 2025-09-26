@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentQuery = "";
   let currentCategory = "";
 
-  // Handle movie card click
-  const handleMovieSelect = (movie) => {
-    iziToast.info({
-      title: "Film selected",
-      message: `You have selected the film: ${movie.title}`,
-      position: "topCenter",
-      timeout: 3000,
-    });
-  };
+  // // Handle movie card click
+  // const handleMovieSelect = (movie) => {
+  //   iziToast.info({
+  //     title: "Film selected",
+  //     message: `You have selected the film: ${movie.title}`,
+  //     position: "topCenter",
+  //     timeout: 3000,
+  //   });
+  // };
 
   searchForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           return;
         }
-        renderMovieGrid(movies, handleMovieSelect);
+        renderMovieGrid(movies);
       } else if (category === "images") {
         const images = await getImagesByQuery(query, 1);
         if (!images || !images.hits || images.hits.length === 0) {
