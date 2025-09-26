@@ -138,6 +138,9 @@ main {
   background: radial-gradient(at 50% 20%, #0000, #000a) bottom left/20px 20px
       repeat-x,
     linear-gradient(red 0 0) bottom/100% 20px no-repeat #ddd;
+  mask: repeating-linear-gradient(90deg, #000 0 4px, #0000 0 20px) 8px 0,
+    radial-gradient(farthest-side, #000 90%, #0000) left bottom/20px 20px
+      repeat-x;
   -webkit-mask: repeating-linear-gradient(90deg, #000 0 4px, #0000 0 20px) 8px 0,
     radial-gradient(farthest-side, #000 90%, #0000) left bottom/20px 20px
       repeat-x;

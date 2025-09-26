@@ -6,16 +6,20 @@
     <title>Seekly</title>
     <!-- Website favicon -->
     <link rel="icon" sizes="180x180" href="src/images/favicon.ico" />
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="src/CSS/style.css" />
+    <!-- External notification library (iziToast) -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css"
     />
   </head>
   <body>
+    <!-- ===== HEADER SECTION ===== -->
     <header class="container">
+      <!-- Search form with category selector and input -->
       <form class="search-form" id="search-form">
-        <!-- Search parameters -->
+        <!-- Radio buttons for category selection -->
         <ul class="search-options">
           <li>
             <input
@@ -33,32 +37,35 @@
           </li>
         </ul>
 
-        <!-- Input part -->
+        <!-- Search input and button -->
         <input type="text" name="query" placeholder="Enter keyword..." />
         <button type="submit">Search</button>
       </form>
     </header>
+    <!-- ===== MAIN SECTION ===== -->
     <main>
       <div class="main-container">
         <h1 class="hidden">Here you will see search results</h1>
+        <!-- Default illustration shown before search -->
         <img
           class="base-image"
           src="./src/images/search.jpg"
           alt="Search illustration"
         />
-        <!-- Loader as a temporary solution between the main page and search results -->
+        <!-- Loader displayed while fetching results -->
         <div class="loader hidden"></div>
-        <!-- Search results -->
+        <!-- Search results container -->
         <div class="results hidden">
           <ul class="gallery"></ul>
         </div>
       </div>
     </main>
+    <!-- ===== FOOTER SECTION ===== -->
     <footer>
       <div class="footer-container">
         <h3>Didn’t find what you were looking for?</h3>
         <p>Tell us what you need, and we’ll improve our search for you.</p>
-
+        <!-- Feedback form for user suggestions -->
         <form class="feedback-form">
           <select name="category">
             <option value="">Choose a category</option>
@@ -78,7 +85,10 @@
         </form>
       </div>
     </footer>
+    <!-- ===== SCRIPTS ===== -->
+    <!-- Main JavaScript file -->
     <script type="module" src="src/main.js"></script>
+    <!-- External iziToast script -->
     <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
   </body>
 </html>
