@@ -199,8 +199,7 @@ footer {
   min-width: 200px;
 }
 
-.feedback-form button,
-.load-more {
+.feedback-form button {
   background: var(--color-red);
   color: var(--color-white);
   border: none;
@@ -211,8 +210,7 @@ footer {
   transition: background 0.3s ease;
 }
 
-.feedback-form button:hover,
-.load-more:hover {
+.feedback-form button:hover {
   background: var(--color-blue);
 }
 /* Mobile version */
