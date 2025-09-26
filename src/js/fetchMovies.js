@@ -1,13 +1,18 @@
-// https://developer.themoviedb.org/reference/search-movie
-// https://developer.themoviedb.org/docs/image-basics
-
 import axios from "axios";
 import defaultImage from "../images/default_movie_image.jpg";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-// This function handles getting data from the movie database.
-
+/**
+ * Fetches movies from the TMDB (The Movie Database) API.
+ *
+ * @async
+ * @function fetchMovies
+ * @param {string} query - The search keyword for movie titles.
+ * @param {number} page - Page number for pagination.
+ * @returns {Promise<Object[]>} A promise that resolves to an array of movie objects.
+ * If the request fails, an empty array is returned.
+ */
 export async function fetchMovies(query, page) {
   try {
     const response = await axios.get(
@@ -33,7 +38,16 @@ export async function fetchMovies(query, page) {
   }
 }
 
-// Create a movie Card
+/**
+ * Creates a movie card element for display in the gallery.
+ *
+ * @function createMovieCard
+ * @param {Object} movie - The movie object returned from TMDB API.
+ * @param {string} movie.title - The title of the movie.
+ * @param {string} [movie.poster_path] - Relative path to the movie poster.
+ * @param {Function} onSelect - Callback function to handle card selection.
+ * @returns {HTMLLIElement} The constructed list item containing the movie card.
+ */
 
 export const createMovieCard = (movie, onSelect) => {
   const placeholderImage = defaultImage;
@@ -60,7 +74,14 @@ export const createMovieCard = (movie, onSelect) => {
   return li;
 };
 
-// These functions build and display the movie cards on the page
+/**
+ * Renders a grid of movie cards inside the gallery container.
+ * Clears existing results and appends new movie cards.
+ *
+ * @function renderMovieGrid
+ * @param {Object[]} movies - Array of movie objects to render.
+ * @param {Function} onSelect - Callback function to handle card selection.
+ */
 
 export const renderMovieGrid = (movies, onSelect) => {
   const movieGrid = document.querySelector(".results .gallery");

@@ -1,7 +1,9 @@
 import { fetchMovies, renderMovieGrid } from "./js/fetchMovies.js";
 import { getImagesByQuery, createGallery } from "./js/fetchImages.js";
 import { showLoader, hideLoader, clearGallery } from "./js/service.js";
-
+/**
+ * Initializes event listeners once the DOM is fully loaded.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.getElementById("search-form");
   const queryInput = searchForm.querySelector('input[name="query"]');
@@ -10,7 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentQuery = "";
   let currentCategory = "";
-
+  /**
+   * Handles the main search form submission.
+   * Fetches movies or images depending on the selected category.
+   */
   searchForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const formData = new FormData(searchForm);
@@ -44,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             position: "topCenter",
             timeout: 3000,
           });
+          queryInput.value = "";
           return;
         }
         renderMovieGrid(movies);
@@ -59,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             position: "topCenter",
             timeout: 3000,
           });
+          queryInput.value = "";
 
           return;
         }
@@ -71,6 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     queryInput.value = "";
   });
+  /**
+   * Handles the feedback form submission.
+   * Validates input and displays feedback confirmation.
+   */
   feedbackForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const categorySelect = feedbackForm.querySelector(
