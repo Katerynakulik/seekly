@@ -6,6 +6,8 @@
 ol,
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 /* Color variables for consistency */
 :root {
@@ -233,12 +235,13 @@ footer {
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  column-gap: 20px;
   justify-content: center;
 }
 @media (min-width: 768px) {
   .gallery {
     justify-content: space-between;
+    gap: 20px;
   }
 }
 /* Gallery card */
