@@ -45,6 +45,28 @@ The goal of **Seekly** was to create a simple, intuitive, and responsive applica
 - User feedback through toast notifications
 - Default placeholder image for missing posters
 
+## ✨ Functionality
+
+The application provides the following core features:
+
+- **Movie Search (TheMovieDB API)**  
+  Users can search for movies by entering a keyword. The app sends requests to [TheMovieDB](https://developer.themoviedb.org/) and displays the results as interactive movie cards with titles and posters.
+
+- **Image Search (Pixabay API)**  
+  Users can search for high-quality images via the [Pixabay API](https://pixabay.com/api/docs/). Results are shown in a responsive gallery with preview thumbnails and access to larger versions of the images.
+
+- **Card-Based Results Display**  
+  Search results for both movies and images are presented as cards. Each card highlights relevant details such as a movie’s title and poster, or an image thumbnail with additional metadata (likes, views, downloads).
+
+- **Error Handling with Notifications (iziToast)**  
+  If a search query fails or no results are found, the app displays clear and user-friendly notifications using the [iziToast](https://izitoast.marcelodolce.com/) library.
+
+- **Loading Indicator (Loader)**  
+  While data is being fetched from external APIs, a loader animation is displayed to indicate that the request is in progress. This enhances user experience by making the waiting time visible.
+
+- **Feedback Form**  
+  At the bottom of the page, users can submit feedback through a simple form. The form allows users to share missing keywords or suggest categories. Upon submission, users receive a confirmation message.
+
 ## 🚀 Deployment
 
 ### Why Vite?
