@@ -67,6 +67,31 @@ The application provides the following core features:
 - **Feedback Form**  
   At the bottom of the page, users can submit feedback through a simple form. The form allows users to share missing keywords or suggest categories. Upon submission, users receive a confirmation message.
 
+  ## 🔎 Search Implementation
+
+The search functionality in the application is designed to provide results from two different sources, depending on the category selected by the user:
+
+- **Movie Search (TheMovieDB API)**  
+  When the user selects the **Movies** category, the application sends a request to [TheMovieDB API](https://developer.themoviedb.org/reference/search-movie).  
+  The API returns a list of movies matching the search keyword. Each result includes details such as the movie title and a poster image, which are displayed as interactive cards on the results page.
+
+- **Image Search (Pixabay API)**  
+  When the user selects the **Images** category, the application communicates with the [Pixabay API](https://pixabay.com/api/docs/).  
+  The API returns a collection of high-quality images related to the search term. Each image is presented in the gallery view with metadata (likes, views, downloads), and users can access larger versions via the integrated lightbox.
+
+Both searches share a common workflow:
+
+1. The user submits a keyword through the search form.
+2. The application determines the selected category (Movies or Images).
+3. Based on the category, the appropriate API request is made.
+4. Results are displayed in a visually structured gallery.
+5. If no results are found, a user-friendly notification is shown.
+
+📌 **Documentation References**
+
+- [TMDB API Documentation](https://developer.themoviedb.org/docs/getting-started)
+- [Pixabay API Documentation](https://pixabay.com/api/docs/)
+
 ## 🚀 Deployment
 
 ### Why Vite?
