@@ -45,11 +45,77 @@ The goal of **Seekly** was to create a simple, intuitive, and responsive applica
 - User feedback through toast notifications
 - Default placeholder image for missing posters
 
+## 🚀 Deployment
+
+### Why Vite?
+
+The project was initially bootstrapped with **[Vite](https://vitejs.dev/)** instead of older bundlers such as Webpack or Create React App.
+
+- ⚡ **Fast development**: Vite provides lightning-fast hot module replacement (HMR), which makes the development process much smoother.
+- 🛠️ **Modern setup**: Out-of-the-box support for ES modules, optimized builds, and a simple project structure.
+- 📦 **Optimized production builds**: Vite bundles the application with Rollup, producing small and efficient assets.
+
+### Why Vercel?
+
+The application is hosted on **[Vercel](https://vercel.com/)**, a platform optimized for frontend frameworks and static site deployments.
+
+- 🌍 **Free hosting with global CDN**: Ensures fast performance worldwide.
+- 🔄 **Automatic deployment**: Each push to the main branch redeploys the app automatically.
+- 🧩 **Perfect integration with Vite**: Vercel handles static assets and ES modules without extra configuration.
+
+### Initial Setup
+
+The project was created using the following steps:
+
+1. **Initialize Vite project**
+
+   ```bash
+   npm create vite@latest seekly
+   cd seekly
+   npm install
+   ```
+
+2. Install dependencies (axios, iziToast, basicLightbox, etc.)
+
+   ```bash
+   npm install axios izitoast basiclightbox
+   ```
+
+3. Add custom code: JS-files, CSS, services, and API integrations were implemented inside the /src folder.
+
+### Running Locally
+
+To run the project on your own machine:
+
+```bash
+# Clone this repository
+git clone https://github.com/your-username/seekly.git
+
+# Navigate into the project folder
+cd seekly
+
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+
+```
+
+The app will be available at [http://localhost:5173/](http://localhost:5173/).
+
+### Deploying on Vercel
+
+1. Push your repository to GitHub (or GitLab/Bitbucket).
+2. Go to [Vercel](https://vercel.com/) and create a new project.
+3. Import your repository, select the Vite preset, and deploy.
+4. The live link will be generated automatically (e.g., https://seekly.vercel.app/).
+
 ## ⚙️ Implementation Details
 
 ### 🔗 Axios Integration
 
-The project uses the **Axios** library (installed via npm) to handle HTTP requests.  
+The project uses the **Axios** library (installed via npm) to handle HTTP requests.
 Axios was chosen because it offers:
 
 - a convenient promise-based syntax,
@@ -73,28 +139,28 @@ The project uses **event delegation** for handling user interactions with the ga
 
 ### 💡 basicLightbox Modal
 
-To display images in a larger format, the project integrates the **basicLightbox** library.  
+To display images in a larger format, the project integrates the **basicLightbox** library.
 Key benefits of using basicLightbox:
 
 - a lightweight, dependency-free modal window solution,
 - easy to integrate and customize,
 - provides a clean way to preview content in full size.
 
-The library was installed via **npm**, but it is also available through **CDN**.  
+The library was installed via **npm**, but it is also available through **CDN**.
 In this project, it is used to open and display high-resolution images when users click on thumbnails in the gallery.
 
 ---
 
 ### 🔔 iziToast Notifications
 
-The project implements **iziToast** to provide user-friendly notifications.  
+The project implements **iziToast** to provide user-friendly notifications.
 It is used for:
 
 - showing error messages (e.g., when the search field is empty),
 - warning users when no results are found,
 - confirming actions such as feedback submission.
 
-iziToast was added via **npm**, but is also available for use with CDN.  
+iziToast was added via **npm**, but is also available for use with CDN.
 Its main advantage is the non-intrusive, modern notification design, which improves user experience.
 
 ---
