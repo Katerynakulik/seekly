@@ -1,7 +1,5 @@
 import axios from "axios";
 import defaultImage from "../images/default_movie_image.jpg";
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
 
 /**
  * Fetches movies from the TMDB (The Movie Database) API.
