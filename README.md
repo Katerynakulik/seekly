@@ -45,41 +45,6 @@ The goal of **Seekly** was to create a simple, intuitive, and responsive applica
 - User feedback through toast notifications
 - Default placeholder image for missing posters
 
-## 🧪 Testing
-
-This section documents the testing process and validation for the project.  
-The tests were planned in advance and executed step by step.
-
----
-
-### ✅ Functionality Testing
-
-| Test Label           | Test Action                                      | Expected Outcome                                                            | Test Outcome |
-| -------------------- | ------------------------------------------------ | --------------------------------------------------------------------------- | ------------ |
-| Homepage Load        | Open the app in browser                          | Homepage loads with header, search form, and empty gallery                  | PASS         |
-| Image Search         | Enter a keyword (e.g., "cats") → submit          | Image results from Pixabay API appear in gallery with thumbnails and titles | PASS         |
-| Movie Search         | Enter a movie title (e.g., "Inception") → submit | Movie results from TMDB API appear in gallery with poster and title         | PASS         |
-| Empty Search Input   | Submit search form with no input                 | iziToast notification appears: "Please enter a search term."                | PASS         |
-| Invalid Search Input | Enter random characters (e.g., "asdfgh")         | iziToast notification appears: "No results found."                          | PASS         |
-| Loader Animation     | Submit search request                            | Loader appears until API response is received                               | PASS         |
-| Modal Image Preview  | Click on an image thumbnail                      | basicLightbox opens with larger version of the image                        | PASS         |
-| Footer Feedback Form | Fill in feedback form and click submit           | Input accepted (UI level only, no backend integration implemented)          | PASS         |
-
----
-
-### 🌍 Browser Compatibility
-
-The app was tested on modern browsers to ensure consistent behavior.
-
-| Browser | Version Tested | Result |
-| ------- | -------------- | ------ |
-| Chrome  | Latest         | PASS   |
-| Firefox | Latest         | PASS   |
-| Edge    | Latest         | PASS   |
-| Safari  | Latest (Mac)   | PASS   |
-
----
-
 ## ✨ Functionality
 
 The application provides the following core features:
@@ -104,7 +69,47 @@ The application provides the following core features:
 
 ---
 
+## 🔎 Search Implementation
+
+The search functionality in the application is designed to provide results from two different sources, depending on the category selected by the user:
+
+- **Movie Search (TheMovieDB API)**  
+  When the user selects the **Movies** category, the application sends a request to [TheMovieDB API](https://developer.themoviedb.org/reference/search-movie).  
+  The API returns a list of movies matching the search keyword. Each result includes details such as the movie title and a poster image, which are displayed as interactive cards on the results page.
+
+- **Image Search (Pixabay API)**  
+  When the user selects the **Images** category, the application communicates with the [Pixabay API](https://pixabay.com/api/docs/).  
+  The API returns a collection of high-quality images related to the search term. Each image is presented in the gallery view with metadata (likes, views, downloads), and users can access larger versions via the integrated lightbox.
+
+Both searches share a common workflow:
+
+1. The user submits a keyword through the search form.
+2. The application determines the selected category (Movies or Images).
+3. Based on the category, the appropriate API request is made.
+4. Results are displayed in a visually structured gallery.
+5. If no results are found, a user-friendly notification is shown.
+
+---
+
 ## 🧪 Testing
+
+This section documents the testing process and validation for the project.  
+The tests were planned in advance and executed step by step.
+
+---
+
+### ✅ Functionality Testing
+
+| Test Label           | Test Action                                      | Expected Outcome                                                            | Test Outcome |
+| -------------------- | ------------------------------------------------ | --------------------------------------------------------------------------- | ------------ |
+| Homepage Load        | Open the app in browser                          | Homepage loads with header, search form, and empty gallery                  | PASS         |
+| Image Search         | Enter a keyword (e.g., "cats") → submit          | Image results from Pixabay API appear in gallery with thumbnails and titles | PASS         |
+| Movie Search         | Enter a movie title (e.g., "Inception") → submit | Movie results from TMDB API appear in gallery with poster and title         | PASS         |
+| Empty Search Input   | Submit search form with no input                 | iziToast notification appears: "Please enter a search term."                | PASS         |
+| Invalid Search Input | Enter random characters (e.g., "asdfgh")         | iziToast notification appears: "No results found."                          | PASS         |
+| Loader Animation     | Submit search request                            | Loader appears until API response is received                               | PASS         |
+| Modal Image Preview  | Click on an image thumbnail                      | SimpleLightbox opens with larger version of the image                       | PASS         |
+| Footer Feedback Form | Fill in feedback form and click submit           | Input accepted (UI level only, no backend integration implemented)          | PASS         |
 
 The application was manually tested on **Desktop, Tablet, and Mobile** to ensure that all functionalities work correctly.  
 Below are the scenarios and results with screenshots.
@@ -193,30 +198,20 @@ Tested using **Lighthouse Audit tool**.
 | ---------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | index.html | <img src="documentation/screenshots/mobile_light.png" alt="Mobile Screenshot" style="width:75%;"> | <img src="documentation/screenshots/desktop_light.png" alt="Mobile Screenshot" style="width:75%;"> |
 
-## 🔎 Search Implementation
+---
 
-The search functionality in the application is designed to provide results from two different sources, depending on the category selected by the user:
+### 🌍 9. Browser Compatibility
 
-- **Movie Search (TheMovieDB API)**  
-  When the user selects the **Movies** category, the application sends a request to [TheMovieDB API](https://developer.themoviedb.org/reference/search-movie).  
-  The API returns a list of movies matching the search keyword. Each result includes details such as the movie title and a poster image, which are displayed as interactive cards on the results page.
+The app was tested on modern browsers to ensure consistent behavior.
 
-- **Image Search (Pixabay API)**  
-  When the user selects the **Images** category, the application communicates with the [Pixabay API](https://pixabay.com/api/docs/).  
-  The API returns a collection of high-quality images related to the search term. Each image is presented in the gallery view with metadata (likes, views, downloads), and users can access larger versions via the integrated lightbox.
+| Browser | Version Tested | Result |
+| ------- | -------------- | ------ |
+| Chrome  | Latest         | PASS   |
+| Firefox | Latest         | PASS   |
+| Edge    | Latest         | PASS   |
+| Safari  | Latest (Mac)   | PASS   |
 
-Both searches share a common workflow:
-
-1. The user submits a keyword through the search form.
-2. The application determines the selected category (Movies or Images).
-3. Based on the category, the appropriate API request is made.
-4. Results are displayed in a visually structured gallery.
-5. If no results are found, a user-friendly notification is shown.
-
-📌 **Documentation References**
-
-- [TMDB API Documentation](https://developer.themoviedb.org/docs/getting-started)
-- [Pixabay API Documentation](https://pixabay.com/api/docs/)
+---
 
 ## 🚀 Deployment
 
@@ -248,10 +243,10 @@ The project was created using the following steps:
    npm install
    ```
 
-2. Install dependencies (axios, iziToast, basicLightbox, etc.)
+2. Install dependencies (axios, iziToast, SimpleLightbox, etc.)
 
    ```bash
-   npm install axios izitoast basiclightbox
+   npm install axios izitoast SimpleLightbox
    ```
 
 3. Add custom code: JS-files, CSS, services, and API integrations were implemented inside the /src folder.
@@ -269,8 +264,8 @@ To use these services, you must:
 2. **Obtain personal API tokens** from your account dashboards.
 3. **Create a `.env` file** in the root directory of your local project with the following variables:
 
-VITE_PIXABAY_API_KEY=your_pixabay_api_key
-VITE_TMDB_TOKEN=your_tmdb_api_key
+- VITE_PIXABAY_API_KEY=your_pixabay_api_key
+- VITE_TMDB_TOKEN=your_tmdb_api_key
 
 4. **Add `.env` to `.gitignore`** to prevent committing sensitive data to version control.
 5. When deploying to **Vercel**, add these environment variables under _Project Settings → Environment Variables_.
@@ -332,10 +327,9 @@ The project uses **event delegation** for handling user interactions with the ga
 
 ---
 
-### 💡 basicLightbox Modal
+### 💡 SimpleLightbox Modal
 
-To display images in a larger format, the project integrates the **basicLightbox** library.
-Key benefits of using basicLightbox:
+Key benefits of using SimpleLightbox:
 
 - a lightweight, dependency-free modal window solution,
 - easy to integrate and customize,
@@ -348,7 +342,6 @@ In this project, it is used to open and display high-resolution images when user
 
 ### 🔔 iziToast Notifications
 
-The project implements **iziToast** to provide user-friendly notifications.
 It is used for:
 
 - showing error messages (e.g., when the search field is empty),
@@ -362,8 +355,6 @@ Its main advantage is the non-intrusive, modern notification design, which impro
 
 ### 🎥 TMDB API for Movie Search
 
-For video search, the project integrates with **The Movie Database (TMDB) API**.
-
 Important notes for usage:
 
 - registration is required to obtain a personal **API key**,
@@ -375,8 +366,6 @@ Important notes for usage:
 
 ### 📷 Pixabay API for Image Search
 
-For image search functionality, the project uses the **Pixabay API**.
-
 Important notes for usage:
 
 - registration is required to obtain a personal **API key**,
@@ -386,12 +375,6 @@ Important notes for usage:
 
 ### ⏳ Loader (Preloader)
 
-The project includes a **loader animation** to improve the user experience while search results are being fetched from the APIs.
-
-- It is displayed in place of results during the waiting time,
-- It disappears once the search data (images or movies) has been successfully loaded,
-- This ensures that users clearly understand the application is working in the background and haven’t encountered an error.
-
 The loader is implemented using **pure CSS**, adapted from the [W3Schools Loader Example](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_loader2).
 
 ---
@@ -399,7 +382,7 @@ The loader is implemented using **pure CSS**, adapted from the [W3Schools Loader
 ## 📜 Credits
 
 - [Axios](https://axios-http.com/) – Licensed under [MIT License](https://github.com/axios/axios/blob/master/LICENSE).
-- [basicLightbox](https://github.com/electerious/basicLightbox) – Licensed under [MIT License](https://github.com/electerious/basicLightbox/blob/master/LICENSE).
+- [SimpleLightbox](https://github.com/andreknieriem/simplelightbox) – Licensed under [MIT License](https://github.com/andreknieriem/simplelightbox/blob/master/LICENSE).
 - [iziToast](https://github.com/marcelodolza/iziToast) – Licensed under [MIT License](https://github.com/marcelodolza/iziToast/blob/master/LICENSE).
 - [Pixabay API](https://pixabay.com/api/docs/) – Free to use with registration.
 - [TMDB API](https://developer.themoviedb.org/docs/getting-started) – Free to use with registration.
@@ -407,3 +390,41 @@ The loader is implemented using **pure CSS**, adapted from the [W3Schools Loader
 - [Royal blue search icon](https://www.iconsdb.com/royal-blue-icons/search-icon.html) – Used as a favicon.
 - [Search image](https://www.pexels.com/photo/close-up-photo-of-magnifying-glass-4205767/) by [Markus Winkler](https://www.pexels.com/@markus-winkler-1430818/)– Used as a default image before search, edited with [Canva](https://www.canva.com/).
 - [Сamera lens photo](https://www.pexels.com/photo/black-camera-lens-on-brown-table-3945314/) by [cottonbro studio](https://www.pexels.com/@cottonbro/)– Used as the default photo for films that do not have posters.
+
+---
+
+## 📊 Results & Future Improvements
+
+### 🔎 Results
+
+Validation
+
+HTML: ✔ Passed W3C validation, no errors.
+CSS: ✔ Passed Jigsaw validation, only warnings for vendor prefixes.
+JavaScript: ✔ Validated with JSHint, minor warnings due to modern ES11+ features (import.meta, optional chaining, async/await). No runtime errors.
+
+---
+
+Testing
+
+- ✅ All core features (search, notifications, loader, feedback form, image preview) work correctly across Desktop, Tablet, and Mobile.
+- ✅ Browser compatibility confirmed (Chrome, Firefox, Edge, Safari).
+- ✅ Lighthouse Audit: good performance and accessibility scores.
+
+---
+
+🚀 Overall Conclusion
+
+- Seekly successfully demonstrates a clean, modern, and responsive web application with integration of two external APIs, modular JavaScript code, and user-friendly UX features (loader, notifications, modal preview, feedback form).
+- The project is stable, validated, and ready for deployment.
+
+---
+
+🔮 Possible Future Improvements
+
+To make the app more powerful and engaging, the following features can be added:
+
+- 📖 Movie Details View — allow opening each movie card with more detailed info (rating, description, release date).
+- 👤 User Authentication — enable users to log in and save their search history.
+- 📚 Book Search — add integration with a books API (e.g., Google Books) including ratings and reviews.
+- 🗂️ Personal Notebook — transform the app into a personal library of interests, where users can save favorite movies, images, and books.
