@@ -130,19 +130,40 @@ The project was created using the following steps:
 
 3. Add custom code: JS-files, CSS, services, and API integrations were implemented inside the /src folder.
 
+### Environment Variables
+
+The app requires access to third-party APIs:
+
+- [Pixabay API](https://pixabay.com/api/docs/) (for image search)
+- [TMDB API](https://developer.themoviedb.org/docs/getting-started) (for movie/video search)
+
+To use these services, you must:
+
+1. **Register** on the [Pixabay](https://pixabay.com/accounts/register/) and [TMDB](https://www.themoviedb.org/signup) websites.
+2. **Obtain personal API tokens** from your account dashboards.
+3. **Create a `.env` file** in the root directory of your local project with the following variables:
+
+VITE_PIXABAY_API_KEY=your_pixabay_api_key
+VITE_TMDB_TOKEN=your_tmdb_api_key
+
+4. **Add `.env` to `.gitignore`** to prevent committing sensitive data to version control.
+5. When deploying to **Vercel**, add these environment variables under _Project Settings → Environment Variables_.
+
 ### Running Locally
 
 To run the project on your own machine:
 
 ```bash
 # Clone this repository
-git clone https://github.com/your-username/seekly.git
+git clone https://github.com/Katerynakulik/seekly.git
 
 # Navigate into the project folder
 cd seekly
 
 # Install dependencies
 npm install
+
+# Create a .env file and add your personal API tokens as described above.
 
 # Start local development server
 npm run dev
@@ -156,7 +177,8 @@ The app will be available at [http://localhost:5173/](http://localhost:5173/).
 1. Push your repository to GitHub (or GitLab/Bitbucket).
 2. Go to [Vercel](https://vercel.com/) and create a new project.
 3. Import your repository, select the Vite preset, and deploy.
-4. The live link will be generated automatically (e.g., https://seekly.vercel.app/).
+4. Add environment variables in the project settings.
+5. The live link will be generated automatically (e.g., https://seekly.vercel.app/).
 
 ## ⚙️ Implementation Details
 
