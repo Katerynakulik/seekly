@@ -65,7 +65,7 @@ The application provides the following core features:
   While data is being fetched from external APIs, a loader animation is displayed to indicate that the request is in progress. This enhances user experience by making the waiting time visible.
 
 - **Feedback Form**  
-  At the bottom of the page, users can submit feedback through a simple form. The form allows users to share missing keywords or suggest categories. Upon submission, users receive a confirmation message.
+  At the bottom of the page, users can submit feedback through a simple form. The form allows users to share missing keywords or suggest categories. Upon submission, users receive a confirmation message. Currently, the data is stored in the object and displayed in the console. In the future, this data will be transferred to the backend and stored according to category, all in one place.
 
 ---
 
@@ -425,6 +425,7 @@ Testing
 To make the app more powerful and engaging, the following features can be added:
 
 - 📖 Movie Details View — allow opening each movie card with more detailed info (rating, description, release date).
+- 📜 Feedback transfer to the backend under the category name.
 - 👤 User Authentication — enable users to log in and save their search history.
 - 📚 Book Search — add integration with a books API (e.g., Google Books) including ratings and reviews.
 - 🗂️ Personal Notebook — transform the app into a personal library of interests, where users can save favorite movies, images, and books.
