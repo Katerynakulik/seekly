@@ -45,6 +45,104 @@ The goal of **Seekly** was to create a simple, intuitive, and responsive applica
 - User feedback through toast notifications
 - Default placeholder image for missing posters
 
+## 🧪 Testing
+
+This section documents the testing process and validation for the project.  
+The tests were planned in advance and executed step by step.
+
+---
+
+### ✅ Functionality Testing
+
+| Test Label           | Test Action                                      | Expected Outcome                                                            | Test Outcome |
+| -------------------- | ------------------------------------------------ | --------------------------------------------------------------------------- | ------------ |
+| Homepage Load        | Open the app in browser                          | Homepage loads with header, search form, and empty gallery                  | PASS         |
+| Image Search         | Enter a keyword (e.g., "cats") → submit          | Image results from Pixabay API appear in gallery with thumbnails and titles | PASS         |
+| Movie Search         | Enter a movie title (e.g., "Inception") → submit | Movie results from TMDB API appear in gallery with poster and title         | PASS         |
+| Empty Search Input   | Submit search form with no input                 | iziToast notification appears: "Please enter a search term."                | PASS         |
+| Invalid Search Input | Enter random characters (e.g., "asdfgh")         | iziToast notification appears: "No results found."                          | PASS         |
+| Loader Animation     | Submit search request                            | Loader appears until API response is received                               | PASS         |
+| Modal Image Preview  | Click on an image thumbnail                      | basicLightbox opens with larger version of the image                        | PASS         |
+| Footer Feedback Form | Fill in feedback form and click submit           | Input accepted (UI level only, no backend integration implemented)          | PASS         |
+
+---
+
+### 🌍 Browser Compatibility
+
+The app was tested on modern browsers to ensure consistent behavior.
+
+| Browser | Version Tested | Result |
+| ------- | -------------- | ------ |
+| Chrome  | Latest         | PASS   |
+| Firefox | Latest         | PASS   |
+| Edge    | Latest         | PASS   |
+| Safari  | Latest (Mac)   | PASS   |
+
+---
+
+### 📱 Responsiveness
+
+The app was tested on multiple devices and screen sizes.  
+Screenshots should be inserted into the placeholders below.
+
+| Device Type  | Screen Size Example | Screenshot Placeholder                                                                                                                                                                                          |
+| ------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Desktop      | 1920 x 1080 px      | <img src="documentation/screenshots/desktop_default_1.png" alt="Desktop Screenshot" style="width:50%;"> <img src="documentation/screenshots/desktop_default_2.png" alt="Desktop Screenshot" style="width:50%;"> |
+| Tablet       | 768 x 1024 px       | <img src="documentation/screenshots/tablet_default.png" alt="Tablet Screenshot" style="width:50%;">                                                                                                             |
+| Mobile Phone | 375 x 667 px        | <img src="documentation/screenshots/mobile_default.png" alt="Mobile Screenshot" style="height:300px;">                                                                                                          |
+
+---
+
+### 🧩 Validation Testing
+
+## Code Validation
+
+### HTML
+
+Validated with [W3C Validator](https://validator.w3.org/).
+
+| File       | Link                                                                                            | Result                                                      |
+| ---------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| index.html | [Validate index.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fseekly-iota.vercel.app%2F) | Document checking completed. No errors or warnings to show. |
+
+### CSS
+
+Validated with [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator).
+
+| File      | Link                                                                                                                                                                          | Result                           |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| style.css | [Validate style.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fseekly-iota.vercel.app%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | Congratulations! No Error Found. |
+
+There are warnings mostly about vendor prefixes (like -webkit-, -moz-, -ms-, -o-) and unrecognized at-rules. These are non-standard properties used to ensure compatibility with older versions of specific browsers, but they are considered outdated by the validator.
+
+### 🔍 JavaScript Validation with JSHint
+
+All JavaScript files were tested with [JSHint](https://jshint.com/).  
+The project uses **modern JavaScript (ES6–ES11)**, so some warnings (e.g., `import.meta`, `optional chaining`) are expected.  
+They are not runtime errors, since the project is bundled with **Vite** and runs in modern browsers.
+
+| File             | Warning / Error Example                                                                   | Explanation / Mitigation                                       | Screenshot                                                              |
+| ---------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `fetchImages.js` | `'import.meta' is only available in ES11 (use 'esversion: 11').`                          | Expected: feature supported in Vite and modern browsers.       | ![fetchImages JSHint](documentation/screenshots/jshint_fetchImages.png) |
+|                  | `'console' is undefined.` / `'document' is undefined.`                                    | Both are valid globals in browsers.                            |                                                                         |
+| `fetchMovies.js` | `'import.meta' is only available in ES11 (use 'esversion: 11').`                          | Expected ES11+ feature.                                        | ![fetchMovies JSHint](documentation/screenshots/jshint_fetchMovies.png) |
+|                  | `Misleading line break before '?'; readers may interpret this as an expression boundary.` | Formatting issue with ternary operator → readability improved. |                                                                         |
+|                  | `'console', 'toast', 'document' are undefined.`                                           | All are valid globals (toast from `iziToast` library).         |                                                                         |
+| `service.js`     | `'document' is undefined.` (multiple occurrences)                                         | Document is a global object in browsers.                       | ![service JSHint](documentation/screenshots/jshint_service.png)         |
+| `main.js`        | `'async functions' is only available in ES8 (use 'esversion: 8').`                        | Modern feature. Fully supported in all target browsers.        | ![main JSHint](documentation/screenshots/jshint_main.png)               |
+|                  | `'Optional chaining' is only available in ES11 (use 'esversion: 11').`                    | Safe modern feature → supported in Vite environment.           |                                                                         |
+|                  | `'document', 'FormData', 'iziToast', 'console' are undefined.`                            | Valid globals or third-party libraries. No runtime errors.     |                                                                         |
+
+---
+
+### Lighthouse Audit
+
+Tested using **Lighthouse Audit tool**.
+
+| Page       | Mobile                                                                                            | Desktop                                                                                            |
+| ---------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| index.html | <img src="documentation/screenshots/mobile_light.png" alt="Mobile Screenshot" style="width:75%;"> | <img src="documentation/screenshots/desktop_light.png" alt="Mobile Screenshot" style="width:75%;"> |
+
 ## ✨ Functionality
 
 The application provides the following core features:
