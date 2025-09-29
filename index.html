@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seekly</title>
     <!-- Website favicon -->
-    <link rel="icon" sizes="180x180" href="src/images/favicon.ico" />
+    <link rel="icon" sizes="180x180" href="src/images/favicon.ico" >
     <!-- Main stylesheet -->
-    <link rel="stylesheet" href="src/CSS/style.css" />
+    <link rel="stylesheet" href="src/CSS/style.css">
     <!-- External notification library (iziToast) -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css"
-    />
+    >
   </head>
   <body>
     <!-- ===== HEADER SECTION ===== -->
@@ -28,17 +28,17 @@
               value="movies"
               id="movies"
               checked
-            />
+            >
             <label for="movies"> Movies </label>
           </li>
           <li>
-            <input type="radio" name="category" value="images" id="images" />
+            <input type="radio" name="category" value="images" id="images" >
             <label for="images"> Images </label>
           </li>
         </ul>
 
         <!-- Search input and button -->
-        <input type="text" name="query" placeholder="Enter keyword..." />
+        <input type="text" name="query" placeholder="Enter keyword..." >
         <button type="submit">Search</button>
       </form>
     </header>
@@ -51,7 +51,7 @@
           class="base-image"
           src="./src/images/search.jpg"
           alt="Search illustration"
-        />
+        >
         <!-- Loader displayed while fetching results -->
         <div class="loader hidden"></div>
         <!-- Search results container -->
@@ -79,7 +79,7 @@
             type="text"
             name="keyword"
             placeholder="What didn't you find?"
-          />
+          >
 
           <button type="submit">Send Request</button>
         </form>
