@@ -80,69 +80,6 @@ The app was tested on modern browsers to ensure consistent behavior.
 
 ---
 
-### 📱 Responsiveness
-
-The app was tested on multiple devices and screen sizes.  
-Screenshots should be inserted into the placeholders below.
-
-| Device Type  | Screen Size Example | Screenshot Placeholder                                                                                                                                                                                          |
-| ------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Desktop      | 1920 x 1080 px      | <img src="documentation/screenshots/desktop_default_1.png" alt="Desktop Screenshot" style="width:50%;"> <img src="documentation/screenshots/desktop_default_2.png" alt="Desktop Screenshot" style="width:50%;"> |
-| Tablet       | 768 x 1024 px       | <img src="documentation/screenshots/tablet_default.png" alt="Tablet Screenshot" style="width:50%;">                                                                                                             |
-| Mobile Phone | 375 x 667 px        | <img src="documentation/screenshots/mobile_default.png" alt="Mobile Screenshot" style="height:300px;">                                                                                                          |
-
----
-
-### 🧩 Validation Testing
-
-## Code Validation
-
-### HTML
-
-Validated with [W3C Validator](https://validator.w3.org/).
-
-| File       | Link                                                                                            | Result                                                      |
-| ---------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| index.html | [Validate index.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fseekly-iota.vercel.app%2F) | Document checking completed. No errors or warnings to show. |
-
-### CSS
-
-Validated with [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator).
-
-| File      | Link                                                                                                                                                                          | Result                           |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| style.css | [Validate style.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fseekly-iota.vercel.app%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | Congratulations! No Error Found. |
-
-There are warnings mostly about vendor prefixes (like -webkit-, -moz-, -ms-, -o-) and unrecognized at-rules. These are non-standard properties used to ensure compatibility with older versions of specific browsers, but they are considered outdated by the validator.
-
-### 🔍 JavaScript Validation with JSHint
-
-All JavaScript files were tested with [JSHint](https://jshint.com/).  
-The project uses **modern JavaScript (ES6–ES11)**, so some warnings (e.g., `import.meta`, `optional chaining`) are expected.  
-They are not runtime errors, since the project is bundled with **Vite** and runs in modern browsers.
-
-| File             | Warning / Error Example                                                                   | Explanation / Mitigation                                       | Screenshot                                                              |
-| ---------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `fetchImages.js` | `'import.meta' is only available in ES11 (use 'esversion: 11').`                          | Expected: feature supported in Vite and modern browsers.       | ![fetchImages JSHint](documentation/screenshots/jshint_fetchImages.png) |
-|                  | `'console' is undefined.` / `'document' is undefined.`                                    | Both are valid globals in browsers.                            |                                                                         |
-| `fetchMovies.js` | `'import.meta' is only available in ES11 (use 'esversion: 11').`                          | Expected ES11+ feature.                                        | ![fetchMovies JSHint](documentation/screenshots/jshint_fetchMovies.png) |
-|                  | `Misleading line break before '?'; readers may interpret this as an expression boundary.` | Formatting issue with ternary operator → readability improved. |                                                                         |
-|                  | `'console', 'toast', 'document' are undefined.`                                           | All are valid globals (toast from `iziToast` library).         |                                                                         |
-| `service.js`     | `'document' is undefined.` (multiple occurrences)                                         | Document is a global object in browsers.                       | ![service JSHint](documentation/screenshots/jshint_service.png)         |
-| `main.js`        | `'async functions' is only available in ES8 (use 'esversion: 8').`                        | Modern feature. Fully supported in all target browsers.        | ![main JSHint](documentation/screenshots/jshint_main.png)               |
-|                  | `'Optional chaining' is only available in ES11 (use 'esversion: 11').`                    | Safe modern feature → supported in Vite environment.           |                                                                         |
-|                  | `'document', 'FormData', 'iziToast', 'console' are undefined.`                            | Valid globals or third-party libraries. No runtime errors.     |                                                                         |
-
----
-
-### Lighthouse Audit
-
-Tested using **Lighthouse Audit tool**.
-
-| Page       | Mobile                                                                                            | Desktop                                                                                            |
-| ---------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| index.html | <img src="documentation/screenshots/mobile_light.png" alt="Mobile Screenshot" style="width:75%;"> | <img src="documentation/screenshots/desktop_light.png" alt="Mobile Screenshot" style="width:75%;"> |
-
 ## ✨ Functionality
 
 The application provides the following core features:
@@ -165,7 +102,98 @@ The application provides the following core features:
 - **Feedback Form**  
   At the bottom of the page, users can submit feedback through a simple form. The form allows users to share missing keywords or suggest categories. Upon submission, users receive a confirmation message.
 
-  ## 🔎 Search Implementation
+---
+
+## 🧪 Testing
+
+The application was manually tested on **Desktop, Tablet, and Mobile** to ensure that all functionalities work correctly.  
+Below are the scenarios and results with screenshots.
+
+---
+
+### 1. Search Functionality
+
+| Scenario                                  | Desktop                                                                     | Tablet                                                                    | Mobile                                                                    |
+| ----------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Search with empty input (warning message) | ![desktop_error_query](documentation/screenshots/desktop_error_query.png)   | ![tablet_error_query](documentation/screenshots/tablet_error_query.png)   | ![mobile_error_query](documentation/screenshots/mobile_error_query.png)   |
+| Search for movies                         | ![desktop_movie_search](documentation/screenshots/desktop_movie_search.png) | ![tablet_movie_search](documentation/screenshots/tablet_movie_search.png) | ![mobile_movie_search](documentation/screenshots/mobile_movie_search.png) |
+| Search for images                         | ![desktop_image_search](documentation/screenshots/desktop_image_search.png) | ![tablet_image_search](documentation/screenshots/tablet_image_search.png) | ![mobile_image_search](documentation/screenshots/mobile_image_search.png) |
+| No results found                          | ![desktop_no_results](documentation/screenshots/desktop_no_results.png)     | ![tablet_no_results](documentation/screenshots/tablet_no_results.png)     | ![mobile_no_results](documentation/screenshots/mobile_no_results.png)     |
+
+---
+
+### 2. Image Preview (SimpleLightBox)
+
+| Scenario               | Desktop                                                   | Tablet                                                  | Mobile                                                  |
+| ---------------------- | --------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| Open image in lightbox | ![desktop_slb](documentation/screenshots/desktop_slb.png) | ![tabley_slb](documentation/screenshots/tabley_slb.png) | ![mobile_slb](documentation/screenshots/mobile_slb.png) |
+
+---
+
+### 3. Feedback Form
+
+| Scenario                                     | Desktop                                                                             | Tablet                                                                            | Mobile                                                                    |
+| -------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Submit feedback with missing required fields | ![desktop_error_feedback](documentation/screenshots/desktop_error_feedback.png)     | ![tablet_error_feedback](documentation/screenshots/tablet_error_feedback.png)     | ![mobile_error_fb](documentation/screenshots/mobile_error_fb.png)         |
+| Submit feedback successfully                 | ![desktop_success_feedback](documentation/screenshots/desktop_success_feedback.png) | ![tablet_success_feedback](documentation/screenshots/tablet_success_feedback.png) | ![mobile_feedback_msg](documentation/screenshots/mobile_feedback_msg.png) |
+
+---
+
+### 4. Default Views
+
+| Scenario                     | Desktop                                                               | Tablet                                                          | Mobile                                                          |
+| ---------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| Default page (before search) | ![desktop_default_1](documentation/screenshots/desktop_default_1.png) | ![tablet_default](documentation/screenshots/tablet_default.png) | ![mobile_default](documentation/screenshots/mobile_default.png) |
+
+---
+
+### 5. HTML
+
+Validated with [W3C Validator](https://validator.w3.org/).
+
+| File       | Link                                                                                            | Result                                                      |
+| ---------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| index.html | [Validate index.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fseekly-iota.vercel.app%2F) | Document checking completed. No errors or warnings to show. |
+
+### 6. CSS
+
+Validated with [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator).
+
+| File      | Link                                                                                                                                                                          | Result                           |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| style.css | [Validate style.css](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fseekly-iota.vercel.app%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | Congratulations! No Error Found. |
+
+There are warnings mostly about vendor prefixes (like -webkit-, -moz-, -ms-, -o-) and unrecognized at-rules. These are non-standard properties used to ensure compatibility with older versions of specific browsers, but they are considered outdated by the validator.
+
+### 🔍 7. JavaScript
+
+All JavaScript files were tested with [JSHint](https://jshint.com/).  
+The project uses **modern JavaScript (ES6–ES11)**, so some warnings (e.g., `import.meta`, `optional chaining`) are expected.  
+They are not runtime errors, since the project is bundled with **Vite** and runs in modern browsers.
+
+| File             | Warning / Error Example                                                                   | Explanation / Mitigation                                       | Screenshot                                                              |
+| ---------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `fetchImages.js` | `'import.meta' is only available in ES11 (use 'esversion: 11').`                          | Expected: feature supported in Vite and modern browsers.       | ![fetchImages JSHint](documentation/screenshots/jshint_fetchImages.png) |
+|                  | `'console' is undefined.` / `'document' is undefined.`                                    | Both are valid globals in browsers.                            |                                                                         |
+| `fetchMovies.js` | `'import.meta' is only available in ES11 (use 'esversion: 11').`                          | Expected ES11+ feature.                                        | ![fetchMovies JSHint](documentation/screenshots/jshint_fetchMovies.png) |
+|                  | `Misleading line break before '?'; readers may interpret this as an expression boundary.` | Formatting issue with ternary operator → readability improved. |                                                                         |
+|                  | `'console', 'toast', 'document' are undefined.`                                           | All are valid globals (toast from `iziToast` library).         |                                                                         |
+| `service.js`     | `'document' is undefined.` (multiple occurrences)                                         | Document is a global object in browsers.                       | ![service JSHint](documentation/screenshots/jshint_service.png)         |
+| `main.js`        | `'async functions' is only available in ES8 (use 'esversion: 8').`                        | Modern feature. Fully supported in all target browsers.        | ![main JSHint](documentation/screenshots/jshint_main.png)               |
+|                  | `'Optional chaining' is only available in ES11 (use 'esversion: 11').`                    | Safe modern feature → supported in Vite environment.           |                                                                         |
+|                  | `'document', 'FormData', 'iziToast', 'console' are undefined.`                            | Valid globals or third-party libraries. No runtime errors.     |                                                                         |
+
+---
+
+### 8. Lighthouse Audit
+
+Tested using **Lighthouse Audit tool**.
+
+| Page       | Mobile                                                                                            | Desktop                                                                                            |
+| ---------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| index.html | <img src="documentation/screenshots/mobile_light.png" alt="Mobile Screenshot" style="width:75%;"> | <img src="documentation/screenshots/desktop_light.png" alt="Mobile Screenshot" style="width:75%;"> |
+
+## 🔎 Search Implementation
 
 The search functionality in the application is designed to provide results from two different sources, depending on the category selected by the user:
 
